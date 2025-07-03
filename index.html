@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POCUS Med - Plateforme d'apprentissage échographie d'urgence</title>
+    <meta name="description" content="Plateforme d'apprentissage de l'échographie POCUS pour la médecine d'urgence">
+    <meta name="theme-color" content="#0a0a0b">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiUE9DVVMgTWVkIC0gw4ljaG9ncmFwaGllIGQnVXJnZW5jZSIsInNob3J0X25hbWUiOiJQT0NVUyBNZWQiLCJkZXNjcmlwdGlvbiI6IlBsYXRlZm9ybWUgZCdhcHByZW50aXNzYWdlIGRlIGwnw6ljaG9ncmFwaGllIFBPQ1VTIHBvdXIgbGEgbcOpZGVjaW5lIGQndXJnZW5jZSIsInN0YXJ0X3VybCI6Ii8iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMGEwYTBiIiwidGhlbWVfY29sb3IiOiIjMGEwYTBiIiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU1USTRJaUJvWldsbmFIUTlJakV5T0NJZ2RtbGxkMEp2ZUQwaU1DQXdJREV5T0NBeU9DSWdabWxzYkQwaUl6QXdNekF4TjJJaUlIaHRiRzV6UFNKb2RIUndPaTh2ZDNkM0xuY3pMbTl5Wnk4eU1EQXdMM04yWnlJK1BIQmhkR2dnWkQwaWJUUTJJREV5YkRJeUxUSTJJREV5VERJeUlEWXlMVEUySWpveUxUSTJJREV5VUdGMGFDQmtQU0p0TmprZ01UQjJOR1F0TkM0eUxUZ3VOUzB4TUdneUxqUnNMVEUwTGprZ01UQXROVGd0TkM0eUxUZ3VOUzB4TUdndE1pNDBJaUJtYVd4c1BTSWpabVptWm1abUlpOCtQSEJoZEdnZ1pEMGlUVGMwTGpVZ05EQXRNelF0TkM0eUxUZ3VOUzB4TUdndE1pNDBiQzB4TkM0NUlERXdJRFU0TFRRdU1pMDRMalV0TVRCb01pNDBJaUJtYVd4c1BTSWpNemN4TmpRMElpOCtQQzl6ZG1jKyIsInNpemVzIjoiMTI4eDEyOCIsInR5cGUiOiJpbWFnZS9zdmcreG1sIn1dfQ==">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAyOCIgZmlsbD0iIzAwMzAxN2IiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTQ2IDEybDIyLTI2IDEybDIyIDYyLTE2IDIyLTI2IDEyUGF0aCBkPSJtNjkgMTB2NGQtNC4yLTguNS0xMGgyLjRsLTE0LjkgMTAtNTgtNC4yLTguNS0xMGgtMi40IiBmaWxsPSIjZmZmZmZmIi8+PHBhdGggZD0iTTc0LjUgNDBjLTM0LTQuMi04LjUtMTBoLTIuNGwtMTQuOSAxMCA1OC00LjItOC41LTEwaDIuNCIgZmlsbD0iIzM3MTY0NCIvPjwvc3ZnPg==">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <div class="brand-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M8 16l8-8h8l-8 8 8 8h-8l-8-8z" fill="currentColor"/>
+                            <path d="M16 8v16" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="brand-text">POCUS Med</span>
+                </div>
+                <div class="nav-links">
+                    <button class="nav-link active" data-view="dashboard">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        </svg>
+                        Tableau de bord
+                    </button>
+                    <button class="nav-link" data-view="modules">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                        Modules
+                    </button>
+                    <button class="nav-link" data-view="progress">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4"/>
+                            <circle cx="12" cy="12" r="9"/>
+                        </svg>
+                        Progrès
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <div id="dashboard-view" class="view active">
+                <div class="container">
+                    <div class="welcome-section">
+                        <h1 class="welcome-title">Bienvenue sur POCUS Med</h1>
+                        <p class="welcome-subtitle">Plateforme d'apprentissage de l'échographie POCUS pour la médecine d'urgence</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4"/>
+                                    <circle cx="12" cy="12" r="9"/>
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">1</div>
+                                <div class="stat-label">Modules complétés</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">2h 15min</div>
+                                <div class="stat-label">Temps d'apprentissage</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-label">Score moyen</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity">
+                        <h2>Activité récente</h2>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon success">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 12l2 2 4-4"/>
+                                        <circle cx="12" cy="12" r="9"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Module complété : Échographie Cardiaque POCUS</div>
+                                    <div class="activity-meta">Score : 85% • Aujourd'hui</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon warning">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 12l2 2 4-4"/>
+                                        <circle cx="12" cy="12" r="9"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Quiz tenté : Échographie Pleuro-pulmonaire</div>
+                                    <div class="activity-meta">Score : 78% • Hier</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modules View -->
+            <div id="modules-view" class="view">
+                <div class="container">
+                    <h1>Modules d'apprentissage</h1>
+                    <div class="modules-grid" id="modules-grid">
+                        <!-- Modules will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress View -->
+            <div id="progress-view" class="view">
+                <div class="container">
+                    <h1>Votre progression</h1>
+                    <div class="progress-overview">
+                        <div class="progress-card">
+                            <h3>Progression globale</h3>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 17%"></div>
+                            </div>
+                            <div class="progress-text">1 / 6 modules complétés</div>
+                        </div>
+                    </div>
+                    <div class="modules-progress" id="modules-progress">
+                        <!-- Progress will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module Detail View -->
+            <div id="module-detail-view" class="view">
+                <div class="container">
+                    <div class="module-header">
+                        <button class="btn-back" id="back-to-modules">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5"/>
+                                <path d="M12 19l-7-7 7-7"/>
+                            </svg>
+                            Retour aux modules
+                        </button>
+                        <div class="module-info" id="module-info">
+                            <!-- Module info will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <div class="content-tabs">
+                            <button class="tab-btn active" data-tab="theory">Théorie</button>
+                            <button class="tab-btn" data-tab="images">Images</button>
+                            <button class="tab-btn" data-tab="videos">Vidéos</button>
+                            <button class="tab-btn" data-tab="quiz">Quiz</button>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="theory-tab">
+                                <div id="theory-content"></div>
+                            </div>
+                            <div class="tab-pane" id="images-tab">
+                                <div id="images-content"></div>
+                            </div>
+                            <div class="tab-pane" id="videos-tab">
+                                <div id="videos-content"></div>
+                            </div>
+                            <div class="tab-pane" id="quiz-tab">
+                                <div id="quiz-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation for Mobile -->
+        <nav class="bottom-navigation">
+            <button class="bottom-nav-link active" data-view="dashboard">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                </svg>
+                <span>Accueil</span>
+            </button>
+            <button class="bottom-nav-link" data-view="modules">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+                <span>Modules</span>
+            </button>
+            <button class="bottom-nav-link" data-view="progress">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4"/>
+                    <circle cx="12" cy="12" r="9"/>
+                </svg>
+                <span>Progrès</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
